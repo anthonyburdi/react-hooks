@@ -23,8 +23,7 @@ function useLocalStorageState(initialValue) {
     setName(event.target.value)
   }
 
-  const props = {name, handleChange}
-  return props
+  return {name, handleChange}
 }
 
 function Greeting({initialName = ''}) {
