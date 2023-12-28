@@ -3,9 +3,11 @@
 
 import * as React from 'react'
 
-function Greeting() {
+// Extra Credit 1 (add initialName)
+function Greeting({initialName}) {
   // 💣 delete this variable declaration and replace it with a React.useState call
-  const [name, setName] = React.useState()
+  // Extra Credit 1 (add initialName)
+  const [name, setName] = React.useState(initialName)
 
   function handleChange(event) {
     // 🐨 update the name here based on event.target.value
@@ -24,7 +26,8 @@ function Greeting() {
 }
 
 function App() {
-  return <Greeting />
+  // Extra Credit 1 (add initialName)
+  return <Greeting initialName="initialName" />
 }
 
 export default App
