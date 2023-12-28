@@ -4,7 +4,7 @@
 import * as React from 'react'
 
 // Extra Credit 1 (add initialName)
-function Greeting({initialName}) {
+function Greeting({initialName = ""}) {
   // 💣 delete this variable declaration and replace it with a React.useState call
   // Extra Credit 1 (add initialName)
   const [name, setName] = React.useState(initialName)
