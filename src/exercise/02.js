@@ -4,9 +4,14 @@
 import * as React from 'react'
 
 function Greeting({initialName = ''}) {
+  // Extra Credit 1 - use function to get initial value for useState:
+  function getInitialName() {
+    return window.localStorage.getItem('name') ?? initialName
+  }
+
   // 🐨 initialize the state to the value from localStorage
   // 💰 window.localStorage.getItem('name') ?? initialName
-  const [name, setName] = React.useState(window.localStorage.getItem('name') ?? initialName)
+  const [name, setName] = React.useState(() => getInitialName())
 
   // 🐨 Here's where you'll use `React.useEffect`.
   // The callback should set the `name` in localStorage.
@@ -28,7 +33,7 @@ function Greeting({initialName = ''}) {
 }
 
 function App() {
-  return <Greeting />
+  return <Greeting initialName='initial name'/>
 }
 
 export default App
