@@ -3,12 +3,12 @@
 
 import * as React from 'react'
 
-function Greeting({initialName = ''}) {
+function useLocalStorageState(initialValue) {
   // 🐨 initialize the state to the value from localStorage
   // 💰 window.localStorage.getItem('name') ?? initialName
   const [name, setName] = React.useState(
     // Extra Credit 1 - use function to get initial value for useState (inline):
-    () => window.localStorage.getItem('name') ?? initialName,
+    () => window.localStorage.getItem('name') ?? initialValue,
   )
 
   // 🐨 Here's where you'll use `React.useEffect`.
@@ -22,6 +22,14 @@ function Greeting({initialName = ''}) {
   function handleChange(event) {
     setName(event.target.value)
   }
+
+  const props = {name, handleChange}
+  return props
+}
+
+function Greeting({initialName = ''}) {
+  const {name, handleChange} = useLocalStorageState(initialName)
+
   return (
     <div>
       <form>
