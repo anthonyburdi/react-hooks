@@ -5,15 +5,7 @@ import * as React from 'react'
 
 function Board() {
   // 🐨 squares is the state for this component. Add useState for squares
-  // TODO: Retrieve from local storage
-  const emptySquares = Array(9).fill(null)
-  const [squares, setSquares] = React.useState(() => {
-    const valueInLocalStorage = window.localStorage.getItem('squares')
-    if (valueInLocalStorage) {
-      return JSON.parse(valueInLocalStorage)
-    }
-    return emptySquares
-  })
+  const [squares, setSquares] = React.useState(Array(9).fill(null))
 
   // 🐨 We'll need the following bits of derived state:
   // - nextValue ('X' or 'O')
@@ -45,16 +37,12 @@ function Board() {
     squaresCopy[square] = nextValue
     // 🐨 set the squares to your copy
     setSquares(squaresCopy)
-    // TODO: Update in local storage
-    window.localStorage.setItem('squares', JSON.stringify(squaresCopy))
   }
 
   function restart() {
     // 🐨 reset the squares
     // 💰 `Array(9).fill(null)` will do it!
-    const emptySquares = Array(9).fill(null)
-    setSquares(emptySquares)
-    window.localStorage.setItem('squares', JSON.stringify(emptySquares))
+    setSquares(Array(9).fill(null))
   }
 
   function renderSquare(i) {
