@@ -15,6 +15,10 @@ function Board() {
     return emptySquares
   })
 
+  React.useEffect(() => {
+    window.localStorage.setItem('squares', JSON.stringify(squares))
+  }, [squares])
+
   // 🐨 We'll need the following bits of derived state:
   // - nextValue ('X' or 'O')
   // - winner ('X', 'O', or null)
@@ -45,8 +49,6 @@ function Board() {
     squaresCopy[square] = nextValue
     // 🐨 set the squares to your copy
     setSquares(squaresCopy)
-    // TODO: Update in local storage
-    window.localStorage.setItem('squares', JSON.stringify(squaresCopy))
   }
 
   function restart() {
@@ -54,7 +56,6 @@ function Board() {
     // 💰 `Array(9).fill(null)` will do it!
     const emptySquares = Array(9).fill(null)
     setSquares(emptySquares)
-    window.localStorage.setItem('squares', JSON.stringify(emptySquares))
   }
 
   function renderSquare(i) {
