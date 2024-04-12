@@ -20,7 +20,7 @@ import {
 // 4. Done
 // 5. WIP
 
-class ErrorBoundary extends React.Component {
+class MyErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
     this.state = {hasError: false, error: null}
@@ -91,6 +91,8 @@ function App() {
     setPokemonName(newPokemonName)
   }
 
+  // Example solution shows this as a new component instead of a function
+  // Is there a preference / best practice?
   function errorDisplay(error) {
     return (
       <div role="alert">
@@ -104,9 +106,9 @@ function App() {
       <PokemonForm pokemonName={pokemonName} onSubmit={handleSubmit} />
       <hr />
       <div className="pokemon-info">
-        <ErrorBoundary key={pokemonName} fallback={errorDisplay}>
+        <MyErrorBoundary key={pokemonName} fallback={errorDisplay}>
           <PokemonInfo pokemonName={pokemonName} />
-        </ErrorBoundary>
+        </MyErrorBoundary>
       </div>
     </div>
   )
