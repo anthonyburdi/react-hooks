@@ -22,6 +22,7 @@ import {ErrorBoundary} from 'react-error-boundary'
 // 4. Done
 // 5. Done
 // 6. Done
+// 7. Done
 
 class MyErrorBoundary extends React.Component {
   constructor(props) {
@@ -110,6 +111,7 @@ function App() {
       <div role="alert">
         There was an error:
         <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
+        <button onClick={resetErrorBoundary}>Try again</button>
       </div>
     )
   }
@@ -120,7 +122,12 @@ function App() {
       <hr />
       <div className="pokemon-info">
         {/* <MyErrorBoundary key={pokemonName} fallback={errorDisplay}> */}
-        <ErrorBoundary fallbackRender={fallbackRender}>
+        <ErrorBoundary
+          fallbackRender={fallbackRender}
+          onReset={() => {
+            setPokemonName('')
+          }}
+        >
           <PokemonInfo pokemonName={pokemonName} />
         </ErrorBoundary>
         {/* </MyErrorBoundary> */}
