@@ -13,12 +13,15 @@ import {
   PokemonDataView,
 } from '../pokemon'
 
+import {ErrorBoundary} from 'react-error-boundary'
+
 // Extra Credit Status
 // 1. Done
 // 2. Done
 // 3. Done
 // 4. Done
-// 5. WIP
+// 5. Done
+// 6. Done
 
 class MyErrorBoundary extends React.Component {
   constructor(props) {
@@ -101,14 +104,26 @@ function App() {
       </div>
     )
   }
+
+  function fallbackRender({error, resetErrorBoundary}) {
+    return (
+      <div role="alert">
+        There was an error:
+        <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
+      </div>
+    )
+  }
+
   return (
     <div className="pokemon-info-app">
       <PokemonForm pokemonName={pokemonName} onSubmit={handleSubmit} />
       <hr />
       <div className="pokemon-info">
-        <MyErrorBoundary key={pokemonName} fallback={errorDisplay}>
+        {/* <MyErrorBoundary key={pokemonName} fallback={errorDisplay}> */}
+        <ErrorBoundary fallbackRender={fallbackRender}>
           <PokemonInfo pokemonName={pokemonName} />
-        </MyErrorBoundary>
+        </ErrorBoundary>
+        {/* </MyErrorBoundary> */}
       </div>
     </div>
   )
