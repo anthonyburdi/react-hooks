@@ -25,21 +25,21 @@ import {ErrorBoundary} from 'react-error-boundary'
 // 7. Done
 // 8. Done
 
-class MyErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {hasError: false, error: null}
-  }
-  static getDerivedStateFromError(error) {
-    return {hasError: true, error: error}
-  }
-  render() {
-    if (this.state.hasError) {
-      return this.props.fallback(this.state.error)
-    }
-    return this.props.children
-  }
-}
+// class MyErrorBoundary extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     this.state = {hasError: false, error: null}
+//   }
+//   static getDerivedStateFromError(error) {
+//     return {hasError: true, error: error}
+//   }
+//   render() {
+//     if (this.state.hasError) {
+//       return this.props.fallback(this.state.error)
+//     }
+//     return this.props.children
+//   }
+// }
 
 function PokemonInfo({pokemonName}) {
   // 🐨 Have state for the pokemon (null)
@@ -98,14 +98,14 @@ function App() {
 
   // Example solution shows this as a new component instead of a function
   // Is there a preference / best practice?
-  function errorDisplay(error) {
-    return (
-      <div role="alert">
-        There was an error:
-        <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
-      </div>
-    )
-  }
+  // function errorDisplay(error) {
+  //   return (
+  //     <div role="alert">
+  //       There was an error:
+  //       <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
+  //     </div>
+  //   )
+  // }
 
   function fallbackRender({error, resetErrorBoundary}) {
     return (
